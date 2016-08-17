@@ -4,6 +4,9 @@ var mongoose = require('mongoose');
 
 var app = express();
 
+var uri = 'mongodb://localhost/flush';
+mongoose.connect(uri);
+
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
