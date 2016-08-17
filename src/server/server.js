@@ -21,3 +21,5 @@ app.listen(PORT, function() {
 });
 
 module.exports = app;
+
+var routes = require('./routes.js');
