@@ -15,6 +15,11 @@ import {
 import App from './src/client/app.js';
 
 class FlushApp extends Component {
+
+  constructor(props, context) {
+    super(props, context);
+  }
+
   render() {
     return (
       <App />

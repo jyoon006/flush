@@ -12,27 +12,13 @@ class MapComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialPosition: {
-      }
+      initialPosition: {}
     };
+
   }
 
-  componentDidMount() {
-    let context = this;
-    navigator.geolocation.getCurrentPosition(function(position) {
-      console.log('position', position);
-      var location = {
-        latitude: position.coords.latitude, 
-        longitude: position.coords.longitude,
-        latitudeDelta: 0.022,
-        longitudeDelta: 0.022,
-      };
-      context.setState({initialPosition: location});
-
-    }, function(err) {
-      console.log('error getting current geolocation', err);
-    },
-    { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+  componentWillReceiveProps(props) {
+    this.setState({ initialPosition: props.initialPosition });
   }
 
   render() {
