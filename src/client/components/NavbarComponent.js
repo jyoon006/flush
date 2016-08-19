@@ -13,18 +13,29 @@ class Navbar extends Component {
   
   render() {
     return(
-      <View style={styles.navbar}>
-        <Icon name="home" size={30} color="white" />
+      <View>
+        <View style={styles.deviceGap}></View>
+        <View style={styles.navbar}>
+          <TouchableOpacity >
+            <Icon name="bars" size={30} color="white" />
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
 }
 
 const styles = {
+  deviceGap: {
+    backgroundColor: '#00698C',
+    height: 3 * vh,
+  },
   navbar: {
-    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    backgroundColor: '#009ACD',
     height: 7 * vh,
-    top: 3 * vh,
+    paddingRight: 5 * vw
   }
 }
 

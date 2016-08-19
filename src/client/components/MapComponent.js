@@ -39,8 +39,7 @@ class MapComponent extends Component {
 
   render() {
     return(
-      <View>
-        <Navbar />
+      <View style={styles.container}>
         <MapView
           style={styles.map}
           region={this.state.initialPosition} >
@@ -51,9 +50,13 @@ class MapComponent extends Component {
             image={require('../assets/pin.png')}
           />
         </MapView>
-        <TouchableOpacity style={styles.addButton} onPress={ this.addPlace }>
-          <Icon name="plus-circle" size={60} color="#009ACD"/>
-        </TouchableOpacity>  
+        <View style={styles.createButton}>
+          <TouchableOpacity onPress={ this.addPlace }>
+            <Text style={styles.createButtonText}>
+              +
+            </Text>
+          </TouchableOpacity>  
+        </View>
       </View>
     )
   }
@@ -63,20 +66,25 @@ class MapComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  addButton:{
-    width: 20 * vw,
-    color:'#fff',
-    textAlign:'center',
-    top: 80 * vh,
-    left: 80 * vw
+  createButton: {
+    top: 78 * vh,
+    left: 80 * vw,
+    width: 60,
+    height: 60,
+    backgroundColor: '#96C0CE',
+    borderRadius: 50,
   },
+  createButtonText: {
+    backgroundColor: 'transparent',
+    fontSize: 30,
+    color: 'white',
+    margin: 10,
+    textAlign: 'center',
+  },
+
   map: {
     position: 'absolute',
-    top: 10 * vh,
     left: 0,
     right: 0,
     bottom: 0,

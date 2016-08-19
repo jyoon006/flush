@@ -8,6 +8,7 @@ import {
 
 import Map from './components/MapComponent.js';
 import AddPlace from './components/AddPlaceComponent.js';
+import Navbar from './components/NavbarComponent.js';
 
 class Routes extends Component {
   
@@ -49,6 +50,7 @@ class Routes extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <Navbar />
         <Navigator
           configureScene={ this.configureScene }
           initialRoute={{ component: 'Map', initialPosition: this.state.initialPosition }}
@@ -67,7 +69,7 @@ class Routes extends Component {
 
     if( route.component === 'AddPlace') {
       return (
-        <AddPlace navigator={ navigator} />
+        <AddPlace navigator={ navigator } />
       )
     }
   }
