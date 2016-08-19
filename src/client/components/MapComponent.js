@@ -7,8 +7,10 @@ import {
 } from 'react-native';
 
 import MapView from 'react-native-maps';
-import {vw, vh, vmin, vmax} from '../viewport.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {vw, vh, vmin, vmax} from '../viewport.js';
+import Navbar from './NavbarComponent.js';
+
 
 class MapComponent extends Component {
   
@@ -17,6 +19,7 @@ class MapComponent extends Component {
     this.state = {
       initialPosition: {}
     };
+    this.addPlace = this.addPlace.bind(this);
 
   }
 
@@ -24,9 +27,20 @@ class MapComponent extends Component {
     this.setState({ initialPosition: props.initialPosition });
   }
 
+  addPlace() {
+    this.props.navigator.push({
+      component: 'AddPlace',
+      passProps: {
+        navigator: this.props.navigator,
+        initialPosition: this.state.initialPosition
+      }
+    })
+  }
+
   render() {
     return(
       <View>
+        <Navbar />
         <MapView
           style={styles.map}
           region={this.state.initialPosition} >
@@ -37,11 +51,9 @@ class MapComponent extends Component {
             image={require('../assets/pin.png')}
           />
         </MapView>
-         
-            <TouchableOpacity style={styles.addButton}>
-              <Icon name="plus-circle" size={60} color="#009ACD"/>
-            </TouchableOpacity>  
-       
+        <TouchableOpacity style={styles.addButton} onPress={ this.addPlace }>
+          <Icon name="plus-circle" size={60} color="#009ACD"/>
+        </TouchableOpacity>  
       </View>
     )
   }
@@ -59,7 +71,7 @@ const styles = StyleSheet.create({
     width: 20 * vw,
     color:'#fff',
     textAlign:'center',
-    top: 90 * vh,
+    top: 80 * vh,
     left: 80 * vw
   },
   map: {

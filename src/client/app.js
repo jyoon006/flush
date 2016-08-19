@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import Map from './components/MapComponent.js';
+import AddPlace from './components/AddPlaceComponent.js';
 
 class Routes extends Component {
   
@@ -40,7 +41,9 @@ class Routes extends Component {
   }
 
   configureScene( route, routeStack ) {
-    return Navigator.SceneConfigs.FloatFromLeft;
+    if( route.component === 'AddPlace') {
+      return Navigator.SceneConfigs.FloatFromBottom;
+    }
   }
 
   render() {
@@ -59,6 +62,12 @@ class Routes extends Component {
     if( route.component === 'Map') {
       return (
         <Map navigator={ navigator } initialPosition={ route.initialPosition }/>
+      )
+    }
+
+    if( route.component === 'AddPlace') {
+      return (
+        <AddPlace navigator={ navigator} />
       )
     }
   }
