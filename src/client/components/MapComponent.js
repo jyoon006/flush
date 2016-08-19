@@ -8,6 +8,7 @@ import {
 
 import MapView from 'react-native-maps';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 import {vw, vh, vmin, vmax} from '../viewport.js';
 import Navbar from './NavbarComponent.js';
 
@@ -40,6 +41,12 @@ class MapComponent extends Component {
   render() {
     return(
       <View style={styles.container}>
+        <View style={styles.deviceGap}></View>
+        <View style={styles.navbar}>
+          <TouchableOpacity >
+            <Icon name="bars" size={30} color="white" />
+          </TouchableOpacity>
+        </View>
         <MapView
           style={styles.map}
           region={this.state.initialPosition} >
@@ -52,9 +59,7 @@ class MapComponent extends Component {
         </MapView>
         <View style={styles.createButton}>
           <TouchableOpacity onPress={ this.addPlace }>
-            <Text style={styles.createButtonText}>
-              +
-            </Text>
+            <IonIcon name="md-add-circle" size={70} color="#96C0CE" />
           </TouchableOpacity>  
         </View>
       </View>
@@ -64,23 +69,24 @@ class MapComponent extends Component {
 
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
+  },
+  deviceGap: {
+    backgroundColor: '#00698C',
+    height: 3 * vh,
+  },
+  navbar: {
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    backgroundColor: '#009ACD',
+    height: 7 * vh,
+    paddingRight: 5 * vw
   },
   createButton: {
     top: 78 * vh,
     left: 80 * vw,
-    width: 60,
-    height: 60,
-    backgroundColor: '#96C0CE',
-    borderRadius: 50,
-  },
-  createButtonText: {
-    backgroundColor: 'transparent',
-    fontSize: 30,
-    color: 'white',
-    margin: 10,
-    textAlign: 'center',
   },
 
   map: {

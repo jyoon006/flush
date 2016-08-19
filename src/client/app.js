@@ -43,14 +43,14 @@ class Routes extends Component {
 
   configureScene( route, routeStack ) {
     if( route.component === 'AddPlace') {
-      return Navigator.SceneConfigs.FloatFromBottom;
+      return Navigator.SceneConfigs.FadeAndroid;
     }
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Navbar />
+        
         <Navigator
           configureScene={ this.configureScene }
           initialRoute={{ component: 'Map', initialPosition: this.state.initialPosition }}
